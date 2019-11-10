@@ -1,0 +1,14 @@
+.range-slider{
+    display: flex;
+    align-items: center;
+    &__main{
+        flex: 1 0 auto;
+        max-width: 250px;
+    }
+    &__input{
+        input{
+            margin: 0;
+            max-width: 65px;
+        }
+    }
+}

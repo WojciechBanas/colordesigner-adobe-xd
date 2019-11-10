@@ -1,0 +1,104 @@
+.images-list {
+    overflow: auto;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    &__list {
+        flex: 1 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        width: 550px;
+        overflow:  auto;
+        padding: 0 8px;
+        margin-left: -8px;
+        margin-right: -8px;
+    }
+    &__image {
+        min-width: 50%;
+        width: 50%;
+        height: 200px;
+        padding: 5px;
+        img {
+            height: 100%;
+            object-fit: cover;
+            max-width: 100%;
+        }
+    }
+    &__search{
+        display: flex;
+        max-width: 700px;
+        margin: 16px auto;
+        input{
+            width: 250px;
+        }
+        button{
+            text-align: center;
+            cursor: pointer;
+            width: 100px;
+        }
+    }
+    &__nav{
+    }
+    .tabs-nav{
+        &__item{
+            color: #707070;
+            &.is-active{
+                .tabs-nav__item-inner{
+                    border: none !important;
+                }
+            }
+        }
+    }
+    &__stock-promo{
+        font-size: 12px;
+        .label{
+            display: block;
+            width: 100px;
+            margin: 0 auto;
+        }
+    }
+    &__error{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 250px;
+    }
+    &__loader{
+        color: #2680EB;
+        text-align: center;
+        font-weight: 500;
+        height: 485px;
+    }
+    &__error-desc{
+        margin-top: 8px;
+    }
+    &__error-actions{
+        margin-top: 8px;
+        button{
+            cursor: pointer;
+        }
+    }
+}
+
+.stock-promo{
+    font-size: 12px;
+    line-height: 21px;
+    padding: 8px;
+    margin-right: -8px;
+    color: #58585D;
+    text-align: right;
+    margin-left: auto;
+    &:hover, &:focus, &:active{
+        color: #58585D;
+    }
+    &__name{
+        color: #fff;
+    }
+    &__label{
+        height: 21px;
+        font-size: 12px;
+        line-height: 21px;
+        margin-left: 4px;
+        border-radius: 3px;
+    }
+}

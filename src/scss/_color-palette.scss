@@ -1,0 +1,42 @@
+.color-palette{
+    top: 24px;
+    &__active-color{
+        height: 160px;
+        width: 160px;
+        background: #18181A;
+        border-radius: 4px;
+    }
+    &__color-list{
+        display: flex;
+        margin-top: 10px;
+        flex-wrap: wrap;
+        margin-left: -4px;
+        margin-right: -4px;
+        width: 160px;
+    }
+    &__color{
+        background: #18181A;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        border-radius: 2px;
+        margin: 4px;
+    }
+    &__input{
+        input{
+            margin: 0;
+        }
+    }
+    &__tabs{
+        margin-top: 8px;
+        display: flex;
+        justify-content: center;
+    }
+    &__actions{
+        margin-top: 16px;
+        button{
+            cursor: pointer;
+        }
+    }
+}
+

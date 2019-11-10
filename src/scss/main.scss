@@ -1,0 +1,61 @@
+@import 'tabs';
+@import 'color-palette';
+@import 'images-list';
+@import 'color-swatches';
+@import 'color-info';
+@import 'range-slider';
+@import 'color-list';
+@import 'modal';
+@import 'label';
+
+.dialog{
+    width: 750px;
+    min-height: 550px;
+    &__title{
+        margin-bottom: 16px;
+    }
+    &__nav{
+        display: flex;
+        margin-bottom: 24px;
+        margin-top: 16px;
+        align-items: center;
+    }
+    &__more-tools{
+        margin-left: auto;
+        color: #505050;
+        padding: 8px 12px;
+        font-weight: 500;
+        &:hover, &:focus{
+            color: #2680EB;
+        }
+    }
+    &__body{
+        display: flex;
+    }
+    &__sidebar{
+        min-width: 160px;
+    }
+    &__content{
+        overflow: auto;
+        height: 530px;
+        flex: 1 0 auto;
+        margin-left: 24px;
+        margin-top: -12px;
+        .tabs-nav{
+            margin-bottom: 24px;
+        }
+    }
+    &__section{
+        margin-bottom: 24px;
+    }
+    &__section-title{
+        display: block;
+        padding-bottom: 16px;
+        margin-left: 0px;
+    }
+    &__footer{
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
