@@ -1,5 +1,15 @@
 <template>
-    <div ref="imagesList" class="images-list"><a href="https://clk.tradedoubler.com/click?p(264338)a(3096280)g(22913782)epi(AdobeXD)epi2(10freephotos)url(https://stock.adobe.com)" target="_blank"  class="images-list__stock-promo"><span class="label">Get a 30-day trial</span></a>
+    <div ref="imagesList" class="images-list">
+            <a
+            class="images-list__banner"
+                href="https://clk.tradedoubler.com/click?p=264338&a=3096280&g=22903366"
+                target="_BLANK"
+            >
+                <img
+                    src="https://imppl.tradedoubler.com/imp?type(img)g(22903366)a(3096280)"
+                    border="0"
+                />
+            </a>
         <div class="images-list__search">
             <input v-model="activePhrase" @keyup.enter="getImages" />
             <button uxp-variant="cta" @click="getImages">Search</button>

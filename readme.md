@@ -1,9 +1,13 @@
 # Color Desginer for Adobe XD
-Build color palette, generate shades and tints directly in Adobe XD 
+Build color palette, generate shades and tints directly in Adobe XD
 
 ## Commands
 
 ```bash
+# install dependencies
+npm install
+
+
 npm run dev
 npm run devPrerelease
 npm run build
