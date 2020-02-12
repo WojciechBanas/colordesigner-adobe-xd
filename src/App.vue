@@ -214,7 +214,7 @@ module.exports = {
                 assets.colors.add([
                     { name: this.selectedColorName, color: newColor }
                 ])
-                this.loadColors()
+                this.loadColorsFromAssets()
                 this.addToAssetsModal = false
 
             });
@@ -222,7 +222,7 @@ module.exports = {
         closePlugin() {
             this.dialog.close()
         },
-        ...mapMutations(['loadColors', 'toggleStockPromo'])
+        ...mapMutations(['loadColorsFromAssets', 'toggleStockPromo'])
     },
     watch: {
         activeColorIndex() {

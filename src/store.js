@@ -9,7 +9,9 @@ const convertColorTo = require('./utils/color-utils.js').convertColorTo
 const createStore = () => {
     return new Vuex.Store({
         state: {
+            activeColors:'selection',
             colors: [],
+            colorsFromSelection: [],
             activeColorIndex: 0,
             presentationMode: false,
             stockPromo: false,
@@ -17,18 +19,35 @@ const createStore = () => {
         },
         getters: {
             activeColor(state) {
-                const rgbValue = convertColorTo(
-                    state.colors[state.activeColorIndex].value,
-                    'rgb'
-                )
-                const hslValue = convertColorTo(
-                    state.colors[state.activeColorIndex].value,
-                    'hsl'
-                )
-                return {
-                    hex: state.colors[state.activeColorIndex].value,
-                    rgb: rgbValue,
-                    hsl: hslValue
+                if(state.activeColors === 'selection'){
+                    const rgbValue = convertColorTo(
+                        state.colorsFromSelection[state.activeColorIndex].value,
+                        'rgb'
+                    )
+                    const hslValue = convertColorTo(
+                        state.colorsFromSelection[state.activeColorIndex].value,
+                        'hsl'
+                    )
+                    return {
+                        hex: state.colorsFromSelection[state.activeColorIndex].value,
+                        rgb: rgbValue,
+                        hsl: hslValue
+                    }
+
+                }else{
+                    const rgbValue = convertColorTo(
+                        state.colors[state.activeColorIndex].value,
+                        'rgb'
+                    )
+                    const hslValue = convertColorTo(
+                        state.colors[state.activeColorIndex].value,
+                        'hsl'
+                    )
+                    return {
+                        hex: state.colors[state.activeColorIndex].value,
+                        rgb: rgbValue,
+                        hsl: hslValue
+                    }
                 }
             }
         },
@@ -42,7 +61,7 @@ const createStore = () => {
             changeActiveColor(state, index) {
                 state.activeColorIndex = index
             },
-            loadColors(state){
+            loadColorsFromAssets(state){
 
                 let colors = assets.colors.get().filter((color, index, array)=>{
                     if(color.color){
@@ -68,6 +87,10 @@ const createStore = () => {
                         value: new Color('#000').toHex()
                     }]
                 }
+            },
+            loadColorsFromSelection(state, colors){
+                console.log('loadColorsFromSelection')
+                state.colorsFromSelection = colors
             },
             cacheImages(state, {phrase, images}){
                 state.cachedImages[phrase] = images
