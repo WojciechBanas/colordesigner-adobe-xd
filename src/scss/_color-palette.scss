@@ -22,6 +22,22 @@
         border-radius: 2px;
         margin: 4px;
     }
+    .tabs-nav{
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        margin-top: 8px;
+    }
+    &__no-data{
+        max-width: 160px;
+    }
+    &__no-data-title{
+        text-align: center;
+    }
+    &__no-data-desc{
+        text-align: center;
+
+    }
     &__input{
         input{
             margin: 0;

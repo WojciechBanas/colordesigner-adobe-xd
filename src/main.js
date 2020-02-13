@@ -9,11 +9,11 @@ const store = require('./store.js')()
 
 
 
-const nodes = []
-const colorsFromSelection = []
+let selectedNodes = []
+let colorsFromSelection = []
 function getChildren(children){
     children.forEach(node => {
-        nodes.push(node)
+        selectedNodes.push(node)
         if(node.children.length){
             getChildren(node.children)
         }
@@ -21,13 +21,15 @@ function getChildren(children){
 }
 
 function getColorsFromSelection(items){
+    selectedNodes = []
+    colorsFromSelection = []
     for(const node of items){
-        nodes.push(node)
+        selectedNodes.push(node)
         if(node.children.length){
             getChildren(node.children)
         }
     }
-    for(const node of nodes) {
+    for(const node of selectedNodes) {
 
         if(node.fill){
             const fillColor = new Color(node.fill.value).toHex()
@@ -55,11 +57,8 @@ function getColorsFromSelection(items){
 
 let dialog
 function getDialog(selection) {
-
     getColorsFromSelection(selection.items)
-    if(colorsFromSelection.length){
-        store.commit('loadColorsFromSelection', colorsFromSelection)
-    }
+    store.commit('loadColorsFromSelection', colorsFromSelection)
     if (dialog == null) {
         document.body.innerHTML = `<dialog><div id="container"></div></dialog>`
         dialog = document.querySelector('dialog')

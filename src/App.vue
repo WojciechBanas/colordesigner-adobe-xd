@@ -129,8 +129,8 @@ const ImagesListModal = require('./components/ImagesListModal.vue').default
 
 
 const TabsNav = require('./components/tabs/TabsNav.vue').default
-const Tabs = require('./components/tabs/tabs.vue').default
-const Tab = require('./components/tabs/tab.vue').default
+const Tabs = require('./components/tabs/Tabs.vue').default
+const Tab = require('./components/tabs/Tab.vue').default
 
 const getTints = require('./utils/color-utils.js').getTints
 const getShades = require('./utils/color-utils.js').getShades
@@ -161,7 +161,7 @@ module.exports = {
         }
     },
     computed: {
-        ...mapState(['colors', 'activeColorIndex', 'presentationMode']),
+        ...mapState(['colors', 'activeColorIndex', 'presentationMode', 'activeColorsTab']),
         ...mapGetters(['activeColor'])
     },
     components:{
@@ -210,7 +210,7 @@ module.exports = {
 
             return new Promise((resolve, reject) => {
 
-                const newColor  = new Color(this.selectedColor);
+                const newColor  = new Color(this.selectedColor)
                 assets.colors.add([
                     { name: this.selectedColorName, color: newColor }
                 ])
@@ -230,7 +230,17 @@ module.exports = {
             this.generateShades()
             this.generateColorHarmonies()
         },
-        colors() {
+        colorsFromAssets() {
+            this.generateTints()
+            this.generateShades()
+            this.generateColorHarmonies()
+        },
+        colorsFromSelection() {
+            this.generateTints()
+            this.generateShades()
+            this.generateColorHarmonies()
+        },
+        activeColorsTab(){
             this.generateTints()
             this.generateShades()
             this.generateColorHarmonies()

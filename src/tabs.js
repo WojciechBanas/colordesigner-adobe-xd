@@ -1,6 +1,17 @@
 export default {
     data() {
         return {
+            activeColorSourceTab: 'assets',
+            colorSourceTabs: [
+                {
+                    label: 'Assets',
+                    name: 'assets'
+                },
+                {
+                    label: 'Selection',
+                    name: 'selection'
+                }
+            ],
             activeMainTab: 'color-list',
             mainTabs: [
                 {
@@ -123,6 +134,11 @@ export default {
         },
         handleNewColorTabChange(name){
             this.activeColorsTab = name
+        },
+        handleColorSourceTabChange(name){
+            this.changeActiveColor(0)
+            this.setActiveColorTab(name)
+            this.activeColorSourceTab = name
         }
     },
 }

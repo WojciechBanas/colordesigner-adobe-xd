@@ -1,15 +1,24 @@
 <template>
     <div class="color-palette">
         <div class="color-palette__active-color" :style="'background:' + activeColor.hex" />
-        <div class="color-palette__color-list">
-            <div v-for="(color,index ) of colors" :key="index" class="color-palette__color" :style="'background:' + color.value" @click="changeActiveColor(index)" :title="color.name"/>
-        </div>
-        selection
-        <div class="color-palette__color-list">
-            <div v-for="(color,index ) of colorsFromSelection" :key="index" class="color-palette__color" :style="'background:' + color.value" @click="changeActiveColor(index)" :title="color.name"/>
-        </div>
+        <TabsNav :tabsList="colorSourceTabs" size="sm" @tabChange="handleColorSourceTabChange" :activeTab="activeColorSourceTab"></TabsNav><tabs :activeTab="activeColorSourceTab">
+            <tab name="assets">
+                <div class="color-palette__color-list">
+                    <div v-for="(color,index) of colorsFromAssets" :key="index" class="color-palette__color" :style="'background:' + color.value" @click="changeActiveColor(index)" :title="color.name"/>
+                </div>
+            </tab>
+            <tab name="selection">
+                <div class="color-palette__color-list">
+                    <div v-for="(color,index) of colorsFromSelection" :key="index" class="color-palette__color" :style="'background:' + color.value" @click="changeActiveColor(index)" :title="color.name"/>
+                </div>
+                <div class="color-palette__no-data" v-if="noSelection">
+                    <h4 class="color-palette__no-data-title">No Colors</h4>
+                    <p  class="color-palette__no-data-desc">Select items and open the plugin again</p>
+                </div>
+            </tab>
+        </tabs>
         <div class="color-palette__actions">
-            <button uxp-variant="cta" @click="showPaletteOnline" v-if="this.colors">View Online</button>
+            <button uxp-variant="cta" @click="showPaletteOnline" v-if="colorsFromAssets">View Online</button>
         </div>
     </div>
 </template>
@@ -19,20 +28,21 @@ const shell = require("uxp").shell
 const mapState = require('vuex').mapState
 const mapMutations = require('vuex').mapMutations
 const mapGetters = require('vuex').mapGetters
-const tabsMixin = require('./../tabs.js')
+const tabsMixin = require('./../tabs.js').default
 
 const TabsNav = require('./tabs/TabsNav.vue').default
 const Tabs = require('./tabs/Tabs.vue').default
 const Tab = require('./tabs/Tab.vue').default
 
 export default {
+    mixins: [tabsMixin],
     components: {
         TabsNav,
         Tabs,
         Tab
     },
     computed: {
-        ...mapState(['colors','colorsFromSelection', 'activeColorIndex', 'activeColor']),
+        ...mapState(['colorsFromAssets','colorsFromSelection', 'activeColorIndex', 'activeColor', 'noSelection']),
         ...mapGetters(['activeColor'])
     },
     data() {
@@ -40,17 +50,21 @@ export default {
             dialogVisible: false
         }
     },
-    mounted() {
-    },
     methods: {
         openOnlinePalette(){
             shell.openExternal('https://colordesigner.io/')
         },
         showPaletteOnline() {
-
-            let colors = this.colors.map((color)=>{
-                return chroma(color.value).hex().substring(1)
-            })
+            let colors
+            if(this.activeColorSourceTab === 'selection'){
+                colors = this.colorsFromSelection.map((color)=>{
+                    return chroma(color.value).hex().substring(1)
+                })
+            }else{
+                colors = this.colorsFromAssets.map((color)=>{
+                    return chroma(color.value).hex().substring(1)
+                })
+            }
             colors = colors.join('-')
             shell.openExternal(`https://colordesigner.io/?presentationMode=true&from=adobexd#${colors}`)
         },
@@ -62,13 +76,12 @@ export default {
                 this.getColorsFromSelection()
             }
         },
-        ...mapMutations(['changeActiveColor'])
+        ...mapMutations(['changeActiveColor', 'setActiveColorTab'])
     },
     filters: {
         formatColor(color) {
             return color.match(/[\d,%.]+/)[0]
         }
-    },
-    mixins: [tabsMixin]
+    }
 }
 </script>
