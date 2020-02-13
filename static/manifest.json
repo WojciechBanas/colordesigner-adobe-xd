@@ -18,8 +18,8 @@
             "height": 48
         }
     ],
-    "version": "1.3.2",
-    "releaseNotes": "General improvments",
+    "version": "1.4.0",
+    "releaseNotes": "New tab - Selection",
     "name": "Color Designer",
     "host": {
         "app": "XD",

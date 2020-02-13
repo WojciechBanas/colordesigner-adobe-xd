@@ -69,3 +69,4 @@ dist
 
 # Service worker
 sw.*
+dist.xdx

@@ -161,7 +161,7 @@ module.exports = {
         }
     },
     computed: {
-        ...mapState(['colors', 'activeColorIndex', 'presentationMode', 'activeColorsTab']),
+        ...mapState(['colors', 'activeColorIndex', 'presentationMode', 'activeColorSourceTab']),
         ...mapGetters(['activeColor'])
     },
     components:{
@@ -240,7 +240,7 @@ module.exports = {
             this.generateShades()
             this.generateColorHarmonies()
         },
-        activeColorsTab(){
+        activeColorSourceTab(){
             this.generateTints()
             this.generateShades()
             this.generateColorHarmonies()
