@@ -58,6 +58,7 @@ function getColorsFromSelection(items){
 let dialog
 function getDialog(selection) {
     getColorsFromSelection(selection.items)
+    store.commit('changeActiveColor',0)
     store.commit('loadColorsFromSelection', colorsFromSelection)
     if (dialog == null) {
         document.body.innerHTML = `<dialog><div id="container"></div></dialog>`
