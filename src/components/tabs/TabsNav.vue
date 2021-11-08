@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import { constants } from 'crypto';
 export default {
     props: {
         tabsList: {

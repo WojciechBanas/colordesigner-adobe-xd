@@ -23,7 +23,7 @@
     "name": "Color Designer",
     "host": {
         "app": "XD",
-        "minVersion": "17.0"
+        "minVersion": "30.0"
     },
     "id": "dc9a1057",
     "uiEntryPoints": [{

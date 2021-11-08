@@ -10,7 +10,7 @@ module.exports = {
         publicPath: 'dist',
         libraryTarget: "commonjs2",
     },
-    devtool: "none",
+    devtool: false,
     devServer: {
         quiet: true
     },
@@ -34,10 +34,8 @@ module.exports = {
     plugins: [
         new VueLoaderPlugin(),
         new FriendlyErrorsWebpackPlugin(),
-        new CopyWebpackPlugin([{
-            from: 'static',
-            to: '.',
-            ignore: ['.*']
-        }]),
+        new CopyWebpackPlugin({
+            patterns: [{ from: 'static', to: '' }]
+        }),
     ]
 };

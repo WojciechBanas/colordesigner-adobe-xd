@@ -4,7 +4,7 @@ const { Color } = require("scenegraph")
 const findIndex = require('lodash/findIndex');
 Vue.use(Vuex)
 const styles = require('./scss/main.scss')
-const App = require('./app.vue').default
+const App = require('./App.vue').default
 const store = require('./store.js')()
 
 
