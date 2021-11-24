@@ -10,9 +10,9 @@ const createStore = () => {
     return new Vuex.Store({
         state: {
             activeColorsTab: 'assets',
-            noSelection: true,
+            noneSelectesLayers: true,
             colorsFromAssets: [],
-            colorsFromSelection: [],
+            colorsFromSelectedLayers: [],
             activeColorIndex: 0,
             presentationMode: false,
             stockPromo: false,
@@ -20,17 +20,17 @@ const createStore = () => {
         },
         getters: {
             activeColor(state) {
-                if(state.activeColorsTab === 'selection'){
+                if(state.activeColorsTab === 'selected-layers'){
                     const rgbValue = convertColorTo(
-                        state.colorsFromSelection[state.activeColorIndex].value,
+                        state.colorsFromSelectedLayers[state.activeColorIndex].value,
                         'rgb'
                     )
                     const hslValue = convertColorTo(
-                        state.colorsFromSelection[state.activeColorIndex].value,
+                        state.colorsFromSelectedLayers[state.activeColorIndex].value,
                         'hsl'
                     )
                     return {
-                        hex: state.colorsFromSelection[state.activeColorIndex].value,
+                        hex: state.colorsFromSelectedLayers[state.activeColorIndex].value,
                         rgb: rgbValue,
                         hsl: hslValue
                     }
@@ -91,14 +91,14 @@ const createStore = () => {
                     }]
                 }
             },
-            loadColorsFromSelection(state, colors){
+            loadcolorsFromSelectedLayers(state, colors){
                 if(colors.length){
                     state.activeColorIndex = 0
-                    state.colorsFromSelection = colors
-                    state.noSelection = false
+                    state.colorsFromSelectedLayers = colors
+                    state.noneSelectesLayers = false
                 }else{
-                    state.noSelection = true
-                    state.colorsFromSelection = [{
+                    state.noneSelectesLayers = true
+                    state.colorsFromSelectedLayers = [{
                         name: '',
                         value: new Color('#000').toHex()
                     }]

@@ -1,15 +1,15 @@
 <template>
     <div class="dialog">
         <div class="dialog__header">
-            <h1 class="dialog__title">Color Designer</h1>
-            <hr>
             <div class="dialog__nav">
                 <TabsNav :tabsList="mainTabs"  @tabChange="handleMainTabChange" :activeTab="activeMainTab"></TabsNav>
                 <a href="https://colordesigner.io/tools?ref=adobexd" class="dialog__more-tools">More Tools</a>
             </div>
         </div>
         <div class="dialog__body">
-            <div class="dialog__sidebar">
+            <div
+            v-if="activeMainTab != 'gradient-generator'"
+            class="dialog__sidebar" >
                 <ColorPalette />
             </div>
             <div class="dialog__content">
@@ -85,6 +85,12 @@
                             </tab>
                         </tabs>
                     </tab>
+                    <tab name="gradient-generator">
+                        <GradientGenerator
+                            @openImagesList="openImagesList"
+                            @selectColor="selectColor"
+                        ></GradientGenerator>
+                    </tab>
                     <tab name="images">
                         <ImagesList></ImagesList>
                     </tab>
@@ -126,6 +132,7 @@ const Modal = require('./components/Modal.vue').default
 const ColorSwatches = require('./components/ColorSwatches.vue').default
 const ImagesList = require('./components/ImagesList.vue').default
 const ImagesListModal = require('./components/ImagesListModal.vue').default
+const GradientGenerator = require('./components/GradientGenerator.vue').default
 
 
 const TabsNav = require('./components/tabs/TabsNav.vue').default
@@ -161,7 +168,7 @@ module.exports = {
         }
     },
     computed: {
-        ...mapState(['colors', 'activeColorIndex', 'presentationMode', 'activeColorsTab']),
+        ...mapState(['colors', 'activeColorIndex', 'presentationMode']),
         ...mapGetters(['activeColor'])
     },
     components:{
@@ -174,7 +181,8 @@ module.exports = {
         Tab,
         ColorSwatches,
         ImagesList,
-        ImagesListModal
+        ImagesListModal,
+        GradientGenerator
     },
     mounted() {
         this.generateTints()
@@ -235,7 +243,7 @@ module.exports = {
             this.generateShades()
             this.generateColorHarmonies()
         },
-        colorsFromSelection() {
+        colorsFromSelectedLayers() {
             this.generateTints()
             this.generateShades()
             this.generateColorHarmonies()

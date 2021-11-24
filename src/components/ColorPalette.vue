@@ -7,9 +7,9 @@
                     <div v-for="(color,index) of colorsFromAssets" :key="index" class="color-palette__color" :style="'background:' + color.value" @click="changeActiveColor(index)" :title="color.name"/>
                 </div>
             </tab>
-            <tab name="selection">
+            <tab name="selected-layers">
                 <div class="color-palette__color-list">
-                    <div v-for="(color,index) of colorsFromSelection" :key="index" class="color-palette__color" :style="'background:' + color.value" @click="changeActiveColor(index)" :title="color.name"/>
+                    <div v-for="(color,index) of colorsFromSelectedLayers" :key="index" class="color-palette__color" :style="'background:' + color.value" @click="changeActiveColor(index)" :title="color.name"/>
                 </div>
                 <div class="color-palette__no-data" v-if="noSelection">
                     <h4 class="color-palette__no-data-title">No Colors</h4>
@@ -42,7 +42,7 @@ export default {
         Tab
     },
     computed: {
-        ...mapState(['colorsFromAssets','colorsFromSelection', 'activeColorIndex', 'activeColor', 'noSelection']),
+        ...mapState(['colorsFromAssets','colorsFromSelectedLayers', 'activeColorIndex', 'activeColor', 'noSelection']),
         ...mapGetters(['activeColor'])
     },
     data() {
@@ -57,7 +57,7 @@ export default {
         showPaletteOnline() {
             let colors
             if(this.activeColorSourceTab === 'selection'){
-                colors = this.colorsFromSelection.map((color)=>{
+                colors = this.colorsFromSelectedLayers.map((color)=>{
                     return chroma(color.value).hex().substring(1)
                 })
             }else{
@@ -73,7 +73,7 @@ export default {
             if(tab === 'local-styles'){
                 this.getColorsFromLibrary()
             }else{
-                this.getColorsFromSelection()
+                this.getColorsFromSelectedLayers()
             }
         },
         ...mapMutations(['changeActiveColor', 'setActiveColorTab'])

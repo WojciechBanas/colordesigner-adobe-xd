@@ -8,11 +8,11 @@ export default {
                     name: 'assets'
                 },
                 {
-                    label: 'Selection',
-                    name: 'selection'
+                    label: 'Selected Layers',
+                    name: 'selected-layers'
                 }
             ],
-            activeMainTab: 'color-list',
+            activeMainTab: 'gradient-generator',
             mainTabs: [
                 {
                     label: 'Shades/Tints',
@@ -21,6 +21,10 @@ export default {
                 {
                     label: 'Color Picker',
                     name: 'color-picker'
+                },
+                {
+                    label: 'Gradient Generator',
+                    name: 'gradient-generator'
                 },
                 {
                     label: 'Images ★',
@@ -136,8 +140,10 @@ export default {
             this.activeColorsTab = name
         },
         handleColorSourceTabChange(name){
-            this.changeActiveColor(0)
-            this.setActiveColorTab(name)
+            if(this.$options._componentTag  != 'GradientGenerator'){
+                this.changeActiveColor(0)
+                this.setActiveColorTab(name)
+            }
             this.activeColorSourceTab = name
         }
     },

@@ -10,7 +10,7 @@ const store = require('./store.js')()
 
 
 let selectedNodes = []
-let colorsFromSelection = []
+let colorsFromSelectedLayers = []
 function getChildren(children){
     children.forEach(node => {
         selectedNodes.push(node)
@@ -20,9 +20,9 @@ function getChildren(children){
     })
 }
 
-function getColorsFromSelection(items){
+function getcolorsFromSelectedLayers(items){
     selectedNodes = []
-    colorsFromSelection = []
+    colorsFromSelectedLayers = []
     for(const node of items){
         selectedNodes.push(node)
         if(node.children.length){
@@ -33,8 +33,8 @@ function getColorsFromSelection(items){
 
         if(node.fill){
             const fillColor = new Color(node.fill.value).toHex()
-            if(findIndex(colorsFromSelection, {value:fillColor}) === -1){
-                colorsFromSelection.push({
+            if(findIndex(colorsFromSelectedLayers, {value:fillColor}) === -1){
+                colorsFromSelectedLayers.push({
                     name: `${fillColor} - ${node.name} (fill)`,
                     value: fillColor
                 })
@@ -43,8 +43,8 @@ function getColorsFromSelection(items){
 
         if(node.stroke){
             const strokeColor = new Color(node.stroke.value).toHex()
-            if(findIndex(colorsFromSelection, {value:strokeColor})  === -1){
-                colorsFromSelection.push({
+            if(findIndex(colorsFromSelectedLayers, {value:strokeColor})  === -1){
+                colorsFromSelectedLayers.push({
                     name: `${strokeColor} - ${node.name} (stroke)`,
                     value: strokeColor
                 })
@@ -56,10 +56,10 @@ function getColorsFromSelection(items){
 
 
 let dialog
-function getDialog(selection) {
-    getColorsFromSelection(selection.items)
+function getDialog(selectedLayers) {
+    getcolorsFromSelectedLayers(selectedLayers.items)
     store.commit('changeActiveColor',0)
-    store.commit('loadColorsFromSelection', colorsFromSelection)
+    store.commit('loadcolorsFromSelectedLayers', colorsFromSelectedLayers)
     if (dialog == null) {
         document.body.innerHTML = `<dialog><div id="container"></div></dialog>`
         dialog = document.querySelector('dialog')
@@ -81,8 +81,8 @@ function getDialog(selection) {
 
 module.exports = {
     commands: {
-        showColorDesignerDialog:  async function(selection) {
-            await getDialog(selection).showModal();
+        showColorDesignerDialog:  async function(selectedLayers) {
+            await getDialog(selectedLayers).showModal();
         }
     }
 }
