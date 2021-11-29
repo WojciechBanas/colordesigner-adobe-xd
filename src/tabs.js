@@ -1,18 +1,18 @@
 export default {
     data() {
         return {
-            activeColorSourceTab: 'assets',
+            activeColorSourceTab: 'selected-layers',
             colorSourceTabs: [
+                {
+                    label: 'Selected Layers',
+                    name: 'selected-layers'
+                },
                 {
                     label: 'Assets',
                     name: 'assets'
                 },
-                {
-                    label: 'Selected Layers',
-                    name: 'selected-layers'
-                }
             ],
-            activeMainTab: 'gradient-generator',
+            activeMainTab: 'shades-tints',
             mainTabs: [
                 {
                     label: 'Shades/Tints',

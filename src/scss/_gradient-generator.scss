@@ -40,7 +40,7 @@
         width: 16px;
         left: calc(50% - 8px);
         path{
-            fill: #F5F5F5;
+            fill: #E8E8E8;
         }
     }
     &__edit-icon{
@@ -113,10 +113,10 @@
         width: 100%;
         position: relative;
         padding: 12px 20px 20px 20px;
-        background: #F5F5F5;
+        background: #E8E8E8;
         .tabs-nav{
             margin-top: -16px;
-            margin-bottom: 16px !important;
+            margin-bottom: 0 !important;
         }
     }
     &__range-container{

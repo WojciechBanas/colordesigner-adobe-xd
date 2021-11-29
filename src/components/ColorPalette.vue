@@ -11,7 +11,7 @@
                 <div class="color-palette__color-list">
                     <div v-for="(color,index) of colorsFromSelectedLayers" :key="index" class="color-palette__color" :style="'background:' + color.value" @click="changeActiveColor(index)" :title="color.name"/>
                 </div>
-                <div class="color-palette__no-data" v-if="noSelection">
+                <div class="color-palette__no-data" v-if="noSelectedLayers">
                     <h4 class="color-palette__no-data-title">No Colors</h4>
                     <p  class="color-palette__no-data-desc">Select items and open the plugin again</p>
                 </div>
@@ -42,7 +42,7 @@ export default {
         Tab
     },
     computed: {
-        ...mapState(['colorsFromAssets','colorsFromSelectedLayers', 'activeColorIndex', 'activeColor', 'noSelection']),
+        ...mapState(['colorsFromAssets','colorsFromSelectedLayers', 'activeColorIndex', 'activeColor', 'noSelectedLayers']),
         ...mapGetters(['activeColor'])
     },
     data() {

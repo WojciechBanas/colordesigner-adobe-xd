@@ -7,11 +7,8 @@ Build color palette, generate shades and tints directly in Adobe XD
 # install dependencies
 npm install
 
-
 npm run dev
-npm run devPrerelease
 npm run build
-npm run package
 ```
 ## Main Features
 
@@ -24,9 +21,10 @@ More info on https://colordesigner.io/adobe-xd-plugin
 
 ## Installation
 
-* Open Adobe XD
-* Open the plugin manager
+* Open Creative Cloud Desktop
+* Go to Stock&Marketplace -> Plugins --> All Plugins
 * Search for Color Designer
+* Click Install
 
 ## License
 

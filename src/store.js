@@ -10,7 +10,7 @@ const createStore = () => {
     return new Vuex.Store({
         state: {
             activeColorsTab: 'assets',
-            noneSelectesLayers: true,
+            noSelectedLayers: true,
             colorsFromAssets: [],
             colorsFromSelectedLayers: [],
             activeColorIndex: 0,
@@ -95,9 +95,9 @@ const createStore = () => {
                 if(colors.length){
                     state.activeColorIndex = 0
                     state.colorsFromSelectedLayers = colors
-                    state.noneSelectesLayers = false
+                    state.noSelectedLayers = false
                 }else{
-                    state.noneSelectesLayers = true
+                    state.noSelectedLayers = true
                     state.colorsFromSelectedLayers = [{
                         name: '',
                         value: new Color('#000').toHex()

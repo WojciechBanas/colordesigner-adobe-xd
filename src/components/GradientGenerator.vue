@@ -154,7 +154,7 @@
                                 :title="color.name"
                             />
                         </div>
-                        <div class="color-palette__no-data" v-if="noSelection">
+                        <div class="color-palette__no-data" v-if="noSelectedLayers">
                             <h4 class="color-palette__no-data-title">
                                 No Colors
                             </h4>
@@ -248,7 +248,7 @@ export default {
             'colorsFromAssets',
             'activeColorIndex',
             'activeColor',
-            'noneSelectesLayers',
+            'noSelectedLayers',
         ]),
         ...mapGetters(['activeColor']),
         activeColor: {
