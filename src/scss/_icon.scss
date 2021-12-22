@@ -1,0 +1,12 @@
+.icon{
+    svg{
+        pointer-events: none;
+        path, line, rect{
+            fill: none;
+            stroke: #323232;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 2px;
+        }
+    }
+}

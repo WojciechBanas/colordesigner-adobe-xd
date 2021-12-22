@@ -9,6 +9,9 @@
         position: relative;
         text-align: center;
         cursor: pointer;
+        &:hover{
+            color: #2680EB;
+        }
         &.is-active{
             color: #2680EB;
             .tabs-nav__item-inner{

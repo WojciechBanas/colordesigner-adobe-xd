@@ -33,7 +33,7 @@
 }
 
 .modal{
-    &--images-list{
+    &--images-list, &--copy-all-colors{
         .modal__title{
             text-align: center;
             display: flex;
@@ -77,5 +77,11 @@
         .modal__close{
             margin-top: 24px;
         }
+    }
+    &--copy-all-colors{
+        max-width: 720px;
+        max-height: 583px;
+        top: 10%;
+        left: 5%;
     }
 }
