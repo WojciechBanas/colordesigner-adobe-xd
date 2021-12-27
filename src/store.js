@@ -9,7 +9,7 @@ const convertColorTo = require('./utils/color-utils.js').convertColorTo
 const createStore = () => {
     return new Vuex.Store({
         state: {
-            activeColorsTab: 'assets',
+            activeColorsTab: 'selected-layers',
             noSelectedLayers: true,
             colorsFromAssets: [],
             colorsFromSelectedLayers: [],

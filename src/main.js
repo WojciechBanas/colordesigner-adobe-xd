@@ -60,6 +60,7 @@ function getDialog(selectedLayers) {
     getcolorsFromSelectedLayers(selectedLayers.items)
     store.commit('changeActiveColor',0)
     store.commit('loadcolorsFromSelectedLayers', colorsFromSelectedLayers)
+    store.commit('setActiveColorTab', 'selected-layers')
     if (dialog == null) {
         document.body.innerHTML = `<dialog><div id="container"></div></dialog>`
         dialog = document.querySelector('dialog')

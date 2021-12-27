@@ -79,9 +79,15 @@
         }
     }
     &--copy-all-colors{
-        max-width: 720px;
-        max-height: 583px;
-        top: 10%;
-        left: 5%;
+        .modal__dialog{
+            max-width: 720px;
+            max-height: 483px;
+            top: 15%;
+            left: 5%;
+        }
+        .modal__action{
+            display: flex;
+            justify-content: center;
+        }
     }
 }

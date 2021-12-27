@@ -193,14 +193,16 @@
                 </select>
             </div>
             <div class="gradient-generator__range-container">
-                <label class="h3 text-center">Steps:</label>
-                <RangeSlider
-                    class="gradient-generator__range"
-                    :min="1"
-                    :max="40"
-                    :start="15"
-                    @update="updateColorValue"
-                />
+                <div>
+                    <label class="h3 text-center">Steps:</label>
+                    <RangeSlider
+                        class="gradient-generator__range"
+                        :min="1"
+                        :max="40"
+                        :start="15"
+                        @update="updateColorValue"
+                    />
+                </div>
                 <div
                     class="gradient-generator__copy-all-colors icon"
                     title="Copy All Colors"

@@ -238,9 +238,9 @@
                     class="form-control"
                     v-model="textAreaColors"
                     readonly
-                    cols="30"
+                    cols="20"
                     rows="22"
-                    style="height: 400px"
+                    style="height: 300px"
                 />
             </div>
             <div class="modal__action">
@@ -379,7 +379,6 @@ module.exports = {
             this.imagesListModalColor = color
         },
         openColorAllColorsModal() {
-            console.log('openColorAllColorsModal')
             this.copyAllColorModal = true
         },
         handleGradientGeneratorColors(colors) {

@@ -141,8 +141,8 @@ export default {
         },
         handleColorSourceTabChange(name){
             if(this.$options._componentTag  != 'GradientGenerator'){
-                this.changeActiveColor(0)
                 this.setActiveColorTab(name)
+                this.changeActiveColor(0)
             }
             this.activeColorSourceTab = name
         }
