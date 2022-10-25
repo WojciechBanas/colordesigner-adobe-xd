@@ -1,15 +1,15 @@
 <template>
     <div ref="imagesList" class="images-list">
         <a
-        class="images-list__banner"
-            href="https://clk.tradedoubler.com/click?p=264338&a=3096280&g=22903366"
-            target="_BLANK"
-        >
-            <img
-                src="https://imppl.tradedoubler.com/imp?type(img)g(22903366)a(3096280)"
+            class="images-list__banner"
+            href="https://adobe.prf.hn/click/camref:1011lrgs8/creativeref:1100l89288"
+            rel="sponsored"
+            target="_blank"
+            ><img
+                src="https://adobe-creative.prf.hn/source/camref:1011lrgs8/creativeref:1100l89288"
                 border="0"
-            />
-        </a>
+        /></a>
+
         <div class="images-list__search">
             <input v-model="activePhrase" @keyup.enter="getImages" />
             <button uxp-variant="cta" @click="getImages">Search</button>
@@ -149,7 +149,9 @@ export default {
             this.getImages()
         },
         openAdobeStock(){
-            shell.openExternal('https://clk.tradedoubler.com/click?p(264338)a(3096280)g(22913782)epi(AdobeXD)epi2(error)url(https://stock.adobe.com)')
+            shell.openExternal(
+                'https://adobe.prf.hn/click/camref:1011lrgs8/creativeref:1101l89509'
+            )
         },
         removeImages() {
             this.loadedImages = 0
